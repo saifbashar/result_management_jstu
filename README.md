@@ -146,8 +146,13 @@ LoginService --> User : uses
 This project is licensed under the MIT License. See the `LICENSE` file for details.
 
 ---
+## Team Member
+- **Arup**
+- **Saif**
+- **Ador**
 
 ## Contact
 For any questions or suggestions, please reach out to:
-- **Email**: your-email@example.com
+- **Email**: arupsaifador@gmail.com
+- **Phone**: 019********
 - **GitHub**: [your-username](https://github.com/your-username)
