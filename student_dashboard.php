@@ -4,11 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Result Archieve System</title>
+  <title>Student Login - Result Archive System</title>
   <link rel="stylesheet" href="./boostrap/bootstrap.min.css">
 </head>
 
 <body>
+  <!-- Navigation Bar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
       <a class="navbar-brand" href="./index.php">Result Archive System</a>
@@ -18,7 +19,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">Login</a>
+            <a class="nav-link" href="./index.php">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="./about.php">About</a>
@@ -31,46 +32,35 @@
     </div>
   </nav>
 
-
+  <!-- Header -->
   <header class="bg-primary text-white text-center py-5">
     <div class="container">
-      <h1>Welcome to the Result Archive System</h1>
-      <p class="lead">Easily manage, view, and access academic results</p>
-      <a href="#roles" class="btn btn-light btn-lg mt-3">Get Started</a>
+      <h1>Student Login</h1>
+      <p class="lead">Access your results and academic details with ease</p>
     </div>
   </header>
 
-
-  <section id="roles" class="py-5">
+  <!-- Login Form -->
+  <section class="py-5">
     <div class="container">
-      <div class="row text-center">
-        <h2 class="mb-4">Choose Your Role</h2>
-        <div class="col-md-4">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
           <div class="card shadow-sm">
             <div class="card-body">
-              <h5 class="card-title">Student</h5>
-              <p class="card-text">View your results and academic details easily.</p>
-              <a href="./student_dashboard.php" class="btn btn-primary">Login as Student</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">Coordinator</h5>
-              <p class="card-text">Add, modify, and manage results efficiently.</p>
-              <a href="#" class="btn btn-primary">Login as Coordinator</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">Super Admin</h5>
-              <p class="card-text">Manage users and system-wide settings.</p>
-              <a href="#" class="btn btn-primary">Login as Super Admin</a>
+              <h3 class="card-title text-center mb-4">Login as Student</h3>
+              <form action="student_dashboard.php" method="POST">
+                <div class="mb-3">
+                  <label for="studentId" class="form-label">Student ID</label>
+                  <input type="text" class="form-control" id="studentId" name="studentId" placeholder="Enter your Student ID" required>
+                </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="password" name="password" placeholder="Enter your Password" required>
+                </div>
+                <div class="d-grid">
+                  <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
@@ -78,14 +68,12 @@
     </div>
   </section>
 
-
+  <!-- Footer -->
   <footer class="bg-dark text-white text-center py-3">
     <p class="mb-0">&copy; 2025 Result Archive System. All Rights Reserved.</p>
   </footer>
 
-
   <script src="./boostrap/bootstrap.bundle.min.js"></script>
-
 </body>
 
 </html>
