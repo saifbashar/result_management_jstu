@@ -40,6 +40,13 @@ This is a web-based **Student Result Management System** designed to simplify th
 
 ### **Software Requirement Specification**:
 To view the Software Requirment Specifications:  [Software Requirement Specifications](https://github.com/saifbashar/result_management_jstu/blob/main/software_specifications/SRS/SRS%20Final.pdf)
+
+### **UML Class Diagram**:
+
+![UML Class Diagram](https://github.com/saifbashar/result_management_jstu/blob/main/software_specifications/uml_class_diagram/usecase.png)
+
+
+
 ### **UML Class Diagram**:
 
 ![UML Class Diagram](https://github.com/saifbashar/result_management_jstu/blob/main/software_specifications/uml_class_diagram/class%20diagram.png)
