@@ -42,60 +42,7 @@ This is a web-based **Student Result Management System** designed to simplify th
 To view the Software Requirment Specifications:  [Software Requirement Specifications](https://github.com/saifbashar/result_management_jstu/blob/main/software_specifications/SRS/SRS%20Final.pdf)
 ### **UML Class Diagram**:
 
-The relationships between the components are visualized in the following UML class diagram:
-
-```plantuml
-@startuml
-class User {
-    +userId: int
-    +name: String
-    +email: String
-    +password: String
-    +login(): void
-}
-
-class Student {
-    +viewResults(): void
-    +viewDetails(): void
-}
-
-class Coordinator {
-    +addResult(): void
-    +modifyResult(): void
-    +viewAllResults(): void
-    +viewIndividualResult(): void
-}
-
-class SuperAdmin {
-    +manageUsers(): void
-    +viewAllUsers(): void
-}
-
-class Result {
-    +resultId: int
-    +studentId: int
-    +subject: String
-    +grade: String
-    +date: Date
-}
-
-class LoginService {
-    +validateCredentials(email: String, password: String): boolean
-    +generateSessionToken(user: User): String
-}
-
-User <|-- Student
-User <|-- Coordinator
-User <|-- SuperAdmin
-
-Student "1" --> "0..*" Result
-Coordinator "1" --> "0..*" Result
-SuperAdmin "1" --> "0..*" User
-
-LoginService --> User : uses
-@enduml
-```
-
+![UML Class Diagram](https://github.com/saifbashar/result_management_jstu/blob/main/software_specifications/uml_class_diagram/class%20diagram.png)
 ---
 
 ## Tech Stack
