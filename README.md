@@ -43,7 +43,7 @@ To view the Software Requirment Specifications:  [Software Requirement Specifica
 
 ### **Usecase Diagram**:
 
-![Usecase Diagram](https://github.com/saifbashar/result_management_jstu/blob/main/software_specifications/usecase_diagram/usecase.png)
+![Usecase Diagram](https://github.com/saifbashar/result_management_jstu/blob/main/software_specifications/usecase_diagram/usecase.jpg)
 
 
 
