@@ -50,7 +50,7 @@
             <div class="card-body">
               <h5 class="card-title">Student</h5>
               <p class="card-text">View your results and academic details easily.</p>
-              <a href="./student_dashboard.php" class="btn btn-primary">Login as Student</a>
+              <a href="./user/student/student_dashboard.php" class="btn btn-primary">Login as Student</a>
             </div>
           </div>
         </div>
@@ -70,7 +70,7 @@
             <div class="card-body">
               <h5 class="card-title">Super Admin</h5>
               <p class="card-text">Manage users and system-wide settings.</p>
-              <a href="#" class="btn btn-primary">Login as Super Admin</a>
+              <a href="./user/superadmin/login_as_sa.php" class="btn btn-primary">Login as Super Admin</a>
             </div>
           </div>
         </div>

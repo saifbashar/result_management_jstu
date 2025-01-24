@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Student Login - Result Archive System</title>
-  <link rel="stylesheet" href="./boostrap/bootstrap.min.css">
+  <link rel="stylesheet" href="../../boostrap/bootstrap.min.css">
 </head>
 
 <body>
@@ -73,7 +73,7 @@
     <p class="mb-0">&copy; 2025 Result Archive System. All Rights Reserved.</p>
   </footer>
 
-  <script src="./boostrap/bootstrap.bundle.min.js"></script>
+  <script src="../../boostrap/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
