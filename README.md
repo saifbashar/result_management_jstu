@@ -114,17 +114,13 @@ LoginService --> User : uses
    ```
 3. **Install dependencies**:
    ```bash
-   npm install  # For Node.js
-   # OR
-   pip install -r requirements.txt  # For Python
+   npm install 
    ```
 4. **Configure the database**:
    - Update database connection settings in the `.env` or configuration file.
 5. **Run the application**:
    ```bash
-   npm start  # For Node.js
-   # OR
-   python manage.py runserver  # For Python
+   npm start 
    ```
 6. **Access the application**:
    - Open your browser and go to `http://localhost:3000` (or the configured port).
