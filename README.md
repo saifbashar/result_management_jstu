@@ -36,6 +36,10 @@ This is a web-based **Student Result Management System** designed to simplify th
 5. **Result**: Stores details of results, including student ID, subject, grade, and date.
 6. **LoginService**: Handles user authentication and session token generation.
 
+
+
+### **Software Requirement Specification**:
+To view the Software Requirment Specifications:  [Software Requirement Specifications](https://github.com/saifbashar/result_management_jstu/blob/main/software_specifications/SRS/SRS%20Final.pdf)
 ### **UML Diagram**:
 
 The relationships between the components are visualized in the following UML class diagram:
