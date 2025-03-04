@@ -19,6 +19,7 @@ if (isset($_POST['login'])) {
 
         if ($users) {
             $_SESSION['status'] = '1';
+            $_SESSION['name'] = $users['name'];
             $_SESSION['email'] = $_POST['email'];
             $_SESSION['role'] = $users['role'];
             $_SESSION['designation'] = $users['designation'];
