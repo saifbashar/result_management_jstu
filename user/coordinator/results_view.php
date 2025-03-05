@@ -1,6 +1,9 @@
 <?php
 session_start();
 include('../../includes/config.php');
+if ($_SESSION['status'] == '') {
+    echo "<script type='text/javascript'> document.location = 'login_as_sa.php'; </script>";
+}
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
@@ -195,6 +198,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" crossorigin="anonymous"></script>
+    <?php
+    include('./favicon.php')
+
+    ?>
     <style>
         body {
             font-family: 'Open Sans', sans-serif;
@@ -491,17 +498,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <?php endif; ?>
                 </div>
             </main>
-            <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid px-4">
-                    <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright © Your Website 2023</div>
-                        <div>
-                            <a href="#">Privacy Policy</a>
-                            · <a href="#">Terms & Conditions</a>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            <?php
+            include('footer.php')
+            ?>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

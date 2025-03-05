@@ -18,7 +18,7 @@ if (isset($_POST['login'])) {
         $users = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($users) {
-            $_SESSION['status'] = '1';
+            $_SESSION['status'] = $users['status'];
             $_SESSION['name'] = $users['name'];
             $_SESSION['email'] = $users['email'];
             $_SESSION['designation'] = $users['designation'];

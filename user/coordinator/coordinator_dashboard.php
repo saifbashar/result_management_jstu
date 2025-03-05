@@ -3,7 +3,7 @@ session_start();
 error_reporting(0);
 include('../../includes/config.php');
 
-if ($_SESSION['status'] == '') {
+if ($_SESSION['status'] != 1) {
     echo "<script type='text/javascript'> document.location = 'login_as_sa.php'; </script>";
 }
 
@@ -48,6 +48,10 @@ try {
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <?php
+    include('./favicon.php')
+
+    ?>
     <style>
         body {
             font-family: 'Open Sans', sans-serif;
@@ -255,19 +259,17 @@ try {
                     <ol class="breadcrumb mb-4">
                         <!-- <li class="breadcrumb-item active">Dashboard</li> -->
                     </ol>
-
                     <div class="university-info mb-4">
-                
-    <p>📢 Important: The deadline for submitting results is next week. Please update results on time.</p>
-
                         <div class="row">
-                        <div class="bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4 mb-6">
-    <p>📅 Next Meeting: March 10, 2025 | Topic: Semester Planning</p>
-</div>
-
+                            <div class="col-md-4">
+                                <img src="../../user/superadmin/assets/images/logo.png" alt="JSTU Campus" style="height: 250px;" class="animate__animated animate__fadeIn">
+                            </div>
+                            <div class="col-md-8">
+                                <h3>About Jamalpur Science and Technology University</h3>
+                                <p>Jamalpur Science and Technology University (JSTU), established in 2017, is a leading public university in Bangladesh, located in Melandaha Upazila, Jamalpur. With a focus on scientific innovation, JSTU offers programs across four faculties, including Computer Science, Electrical Engineering, and Fisheries, supported by advanced labs like the Genetic Analyzer Machine Lab. Since its inception with 136 students in 2019, it has grown into a hub of academic excellence.</p>
+                            </div>
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="col-xl-3 col-md-6">
                             <div class="dashboard-widget">
@@ -288,10 +290,10 @@ try {
                             </div>
                         </div>
                         <div class="col-xl-3 col-md-6">
-                            <div class="dashboard-widget">
+                            <!-- <div class="dashboard-widget">
                                 <h4>Research Projects</h4>
                                 <p class="display-6"><?php echo $projectCount; ?></p>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
 
@@ -348,16 +350,9 @@ try {
                     </div>
                 </div>
             </main>
-            <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid px-4">
-                    <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright © JSTU 2023</div>
-                        <div>
-                            <a href="#">Privacy Policy</a> · <a href="#">Terms & Conditions</a>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            <?php
+            include('footer.php')
+            ?>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
