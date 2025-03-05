@@ -48,6 +48,10 @@ try {
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <?php
+    include('./favicon.php')
+
+    ?>
     <style>
         body {
             font-family: 'Open Sans', sans-serif;
@@ -257,9 +261,8 @@ try {
 
                     <div class="university-info mb-4">
                         <div class="row">
-                            <div class="col-md-4">
-                                <img src="https://via.placeholder.com/300x200.png?text=JSTU+Campus" alt="JSTU Campus"
-                                    class="animate__animated animate__fadeIn">
+                        <div class="col-md-4">
+                                <img src="../../user/superadmin/assets/images/logo.png" alt="JSTU Campus" style="height: 250px;" class="animate__animated animate__fadeIn">
                             </div>
                             <div class="col-md-8">
                                 <h3>About Jamalpur Science and Technology University</h3>

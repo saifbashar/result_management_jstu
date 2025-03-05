@@ -195,6 +195,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" crossorigin="anonymous"></script>
+    <?php
+    include('./favicon.php')
+
+    ?>
     <style>
         body {
             font-family: 'Open Sans', sans-serif;
