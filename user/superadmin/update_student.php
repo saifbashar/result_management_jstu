@@ -1,5 +1,11 @@
 <?php
+session_start();
+error_reporting(0);
 include('../../includes/config.php');
+
+if ($_SESSION['status'] == '') {
+    echo "<script type='text/javascript'> document.location = 'login_as_sa.php'; </script>";
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = isset($_POST['id']) ? trim($_POST['id']) : null;

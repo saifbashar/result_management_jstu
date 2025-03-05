@@ -1,5 +1,12 @@
 <?php
+
+session_start();
+error_reporting(0);
 include('../../includes/config.php');
+
+if ($_SESSION['status'] == '') {
+    echo "<script type='text/javascript'> document.location = 'login_as_sa.php'; </script>";
+}
 
 try {
     $sql = "SELECT id, name, session, password, status FROM students";
@@ -24,6 +31,10 @@ try {
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <?php
+    include('./favicon.php')
+
+    ?>
     <style>
         body {
             font-family: 'Open Sans', sans-serif;
@@ -354,25 +365,15 @@ try {
                     </div>
                 </div>
             </main>
-            <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid px-4">
-                    <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright © ASA</div>
-                        <div>
-                            <a href="#">Privacy Policy</a>
-                            · <a href="#">Terms & Conditions</a> 
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            <?php
+            include('./footer.php')
+            ?>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
-        crossorigin="anonymous"></script>
-    <!-- <script src="js/datatables-simple-demo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+    <script src="js/datatables-simple-demo.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const dataTable = new simpleDatatables.DataTable("#datatablesSimple", {

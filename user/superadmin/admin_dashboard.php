@@ -24,7 +24,7 @@ try {
     $stmtProjects = $pdo->query($sqlProjects);
     $projectCount = $stmtProjects->fetch(PDO::FETCH_ASSOC)['project_count'];
 
-    $sqlCseFaculty = "SELECT name, designation, email, phone FROM coordinator WHERE designation LIKE '%Computer Science%' LIMIT 5";
+    $sqlCseFaculty = "SELECT name, designation, email, phone FROM coordinator";
     $stmtCseFaculty = $pdo->query($sqlCseFaculty);
     $cseFaculty = $stmtCseFaculty->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
@@ -36,18 +36,22 @@ try {
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="Dashboard for Jamalpur Science and Technology University" />
-    <meta name="author" content="JSTU Admin" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Dashboard for Jamalpur Science and Technology University">
+    <meta name="author" content="JSTU Admin">
     <title>JSTU Dashboard - Admin</title>
-    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <?php
+    include('./favicon.php')
+
+    ?>
     <style>
         body {
             font-family: 'Open Sans', sans-serif;
@@ -258,7 +262,7 @@ try {
                     <div class="university-info mb-4">
                         <div class="row">
                             <div class="col-md-4">
-                                <img src="https://via.placeholder.com/300x200.png?text=JSTU+Campus" alt="JSTU Campus" class="animate__animated animate__fadeIn">
+                                <img src="../../user/superadmin/assets/images/logo.png" alt="JSTU Campus" style="height: 250px;" class="animate__animated animate__fadeIn">
                             </div>
                             <div class="col-md-8">
                                 <h3>About Jamalpur Science and Technology University</h3>
@@ -268,30 +272,25 @@ try {
                     </div>
 
                     <div class="row">
-                        <div class="col-xl-3 col-md-6">
+                        <div class="col-xl-4 col-md-6">
                             <div class="dashboard-widget">
                                 <h4>Total Students</h4>
-                                <p class="display-6"><?php echo $studentCount; ?></p>
+                                <p class="count" data-count="<?php echo $studentCount; ?>">0</p>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-md-6">
+                        <div class="col-xl-4 col-md-6">
                             <div class="dashboard-widget">
                                 <h4>Courses Offered</h4>
-                                <p class="display-6"><?php echo $courseCount; ?></p>
+                                <p class="count" data-count="<?php echo $courseCount; ?>">0</p>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-md-6">
+                        <div class="col-xl-4 col-md-6">
                             <div class="dashboard-widget">
                                 <h4>Faculty Members</h4>
-                                <p class="display-6"><?php echo $facultyCount; ?></p>
+                                <p class="count" data-count="<?php echo $facultyCount; ?>">0</p>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-md-6">
-                            <div class="dashboard-widget">
-                                <h4>Research Projects</h4>
-                                <p class="display-6"><?php echo $projectCount; ?></p>
-                            </div>
-                        </div>
+
                     </div>
 
                     <div class="row">
@@ -322,41 +321,25 @@ try {
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <?php
-                                $sampleFaculty = [
-                                    ['name' => 'Dr. John Doe', 'designation' => 'Professor', 'email' => 'john@jstu.edu', 'phone' => '123-456-7890', 'photo' => 'https://via.placeholder.com/100.png?text=John'],
-                                    ['name' => 'Dr. Jane Smith', 'designation' => 'Associate Professor', 'email' => 'jane@jstu.edu', 'phone' => '123-456-7891', 'photo' => 'https://via.placeholder.com/100.png?text=Jane'],
-                                    ['name' => 'Mr. Alex Brown', 'designation' => 'Assistant Professor', 'email' => 'alex@jstu.edu', 'phone' => '123-456-7892', 'photo' => 'https://via.placeholder.com/100.png?text=Alex'],
-                                    ['name' => 'Ms. Emily White', 'designation' => 'Lecturer', 'email' => 'emily@jstu.edu', 'phone' => '123-456-7893', 'photo' => 'https://via.placeholder.com/100.png?text=Emily'],
-                                    ['name' => 'Dr. Mike Green', 'designation' => 'Professor', 'email' => 'mike@jstu.edu', 'phone' => '123-456-7894', 'photo' => 'https://via.placeholder.com/100.png?text=Mike']
-                                ];
-                                foreach ($sampleFaculty as $faculty) {
-                                    echo "<div class='col-md-4 mb-3'>
-                                        <div class='faculty-card text-center'>
-                                            <img src='{$faculty['photo']}' alt='{$faculty['name']}' class='mb-2'>
-                                            <h5>{$faculty['name']}</h5>
-                                            <p>{$faculty['designation']}</p>
-                                            <p>Email: {$faculty['email']}</p>
-                                            <p>Phone: {$faculty['phone']}</p>
+                                <?php foreach ($cseFaculty as $faculty) { ?>
+                                    <div class="col-md-4 mb-3">
+                                        <div class="faculty-card text-center">
+                                            <img src="../../user/superadmin/assets/dashboard_picture/avator_faculty.png" alt="<?php echo $faculty['name']; ?>" class="mb-2">
+                                            <h5><?php echo $faculty['name']; ?></h5>
+                                            <p><?php echo $faculty['designation']; ?></p>
+                                            <p>Email: <?php echo $faculty['email']; ?></p>
+                                            <p>Phone: <?php echo $faculty['phone']; ?></p>
                                         </div>
-                                    </div>";
-                                }
-                                ?>
+                                    </div>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
                 </div>
             </main>
-            <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid px-4">
-                    <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright © JSTU 2023</div>
-                        <div>
-                            <a href="#">Privacy Policy</a> · <a href="#">Terms & Conditions</a>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            <?php
+            include('footer.php')
+            ?>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
@@ -365,6 +348,25 @@ try {
     <script src="js/scripts.js"></script>
     <script src="js/datatables-simple-demo.js"></script>
     <script>
+        function animateCount(element, end, duration) {
+            let start = 0;
+            let range = end - start;
+            let increment = end > start ? 1 : -1;
+            let stepTime = Math.abs(Math.floor(duration / range));
+            let timer = setInterval(function() {
+                start += increment;
+                element.textContent = start;
+                if (start == end) {
+                    clearInterval(timer);
+                }
+            }, stepTime);
+        }
+
+        document.querySelectorAll('.count').forEach(function(element) {
+            let endValue = parseInt(element.getAttribute('data-count'));
+            animateCount(element, endValue, 2000);
+        });
+
         var ctxArea = document.getElementById("myAreaChart").getContext('2d');
         new Chart(ctxArea, {
             type: 'line',

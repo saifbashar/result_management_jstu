@@ -114,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $pdf->SetXY(15, 5);
         $pdf->Cell(0, 5, 'Generated on: ' . date('Y-m-d H:i:s'), 0, 1, 'L');
 
-        $pdf->Image('https://jstu.ac.bd/assets/img/logo.png', 90, 10, 30, 30, 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+        $pdf->Image('../../resources/logo/logo.png', 90, 10, 30, 30, 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
         $pdf->SetFont('helvetica', 'B', 16);
         $pdf->SetY(40);
@@ -162,13 +162,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $pdf->Cell(20, 8, $result['credit'], 1, 1, 'C');
         }
 
-        $pdf->SetY(250);
-        $pdf->SetFont('helvetica', 'B', 10);
-        $pdf->Cell(90, 8, '_______________________', 0, 0, 'L');
-        $pdf->Cell(0, 8, '_______________________', 0, 1, 'R');
-        $pdf->SetFont('helvetica', '', 9);
-        $pdf->Cell(90, 8, 'Department Chairman', 0, 0, 'L');
-        $pdf->Cell(0, 8, 'Course Coordinator', 0, 1, 'R');
+        // $pdf->SetY(250);
+        // $pdf->SetFont('helvetica', 'B', 10);
+        // $pdf->Cell(90, 8, '_______________________', 0, 0, 'L');
+        // $pdf->Cell(0, 8, '_______________________', 0, 1, 'R');
+        // $pdf->SetFont('helvetica', '', 9);
+        // $pdf->Cell(90, 8, 'Department Chairman', 0, 0, 'L');
+        // $pdf->Cell(0, 8, 'Course Coordinator', 0, 1, 'R');
 
         $pdf->SetY(270);
         $pdf->SetFont('helvetica', 'I', 8);

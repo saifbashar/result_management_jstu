@@ -1,6 +1,11 @@
 <?php
 session_start();
+error_reporting(0);
 include('../../includes/config.php');
+
+if ($_SESSION['status'] == '') {
+    echo "<script type='text/javascript'> document.location = 'login_as_sa.php'; </script>";
+}
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
@@ -114,7 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $pdf->SetXY(15, 5);
         $pdf->Cell(0, 5, 'Generated on: ' . date('Y-m-d H:i:s'), 0, 1, 'L');
 
-        $pdf->Image('https://jstu.ac.bd/assets/img/logo.png', 90, 10, 30, 30, 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+        $pdf->Image('../../resources/logo/logo.png', 90, 10, 30, 30, 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
         $pdf->SetFont('helvetica', 'B', 16);
         $pdf->SetY(40);
@@ -162,13 +167,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $pdf->Cell(20, 8, $result['credit'], 1, 1, 'C');
         }
 
-        $pdf->SetY(250);
-        $pdf->SetFont('helvetica', 'B', 10);
-        $pdf->Cell(90, 8, '_______________________', 0, 0, 'L');
-        $pdf->Cell(0, 8, '_______________________', 0, 1, 'R');
-        $pdf->SetFont('helvetica', '', 9);
-        $pdf->Cell(90, 8, 'Department Chairman', 0, 0, 'L');
-        $pdf->Cell(0, 8, 'Course Coordinator', 0, 1, 'R');
+        // $pdf->SetY(250);
+        // $pdf->SetFont('helvetica', 'B', 10);
+        // $pdf->Cell(90, 8, '_______________________', 0, 0, 'L');
+        // $pdf->Cell(0, 8, '_______________________', 0, 1, 'R');
+        // $pdf->SetFont('helvetica', '', 9);
+        // $pdf->Cell(90, 8, 'Department Chairman', 0, 0, 'L');
+        // $pdf->Cell(0, 8, 'Course Coordinator', 0, 1, 'R');
 
         $pdf->SetY(270);
         $pdf->SetFont('helvetica', 'I', 8);
@@ -195,6 +200,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" crossorigin="anonymous"></script>
+    <?php
+    include('./favicon.php')
+
+    ?>
     <style>
         body {
             font-family: 'Open Sans', sans-serif;
@@ -491,17 +500,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <?php endif; ?>
                 </div>
             </main>
-            <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid px-4">
-                    <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright © Your Website 2023</div>
-                        <div>
-                            <a href="#">Privacy Policy</a>
-                            · <a href="#">Terms & Conditions</a>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            <?php
+            include('./footer.php')
+            ?>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

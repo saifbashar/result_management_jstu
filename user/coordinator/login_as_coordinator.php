@@ -4,30 +4,30 @@ error_reporting(0);
 include('../../includes/config.php');
 
 if ($_SESSION['status']) {
-    echo "<script type='text/javascript'> document.location = 'student_dashboard.php'; </script>";
+    echo "<script type='text/javascript'> document.location = 'coordinator_dashboard.php'; </script>";
 }
 
 if (isset($_POST['login'])) {
-    $student_id = $_POST['student_id'];
+    $email = $_POST['email'];
     $password = $_POST['password'];
     try {
-        $stmt = $pdo->prepare("SELECT * FROM students WHERE id = :student_id AND password = :password AND status = 1");
-        $stmt->bindParam(':student_id', $student_id);
+        $stmt = $pdo->prepare("SELECT * FROM coordinator WHERE email = :email AND password = :password");
+        $stmt->bindParam(':email', $email);
         $stmt->bindParam(':password', $password);
         $stmt->execute();
-        $student = $stmt->fetch(PDO::FETCH_ASSOC);
+        $users = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($student) {
+        if ($users) {
             $_SESSION['status'] = '1';
-            $_SESSION['student_id'] = $student['id'];
-            $_SESSION['student_name'] = $student['name'];
-            $_SESSION['student_session'] = $student['session'];
-            echo "<script type='text/javascript'> document.location = 'student_dashboard.php'; </script>";
+            $_SESSION['name'] = $users['name'];
+            $_SESSION['email'] = $users['email'];
+            $_SESSION['designation'] = $users['designation'];
+            echo "<script type='text/javascript'> document.location = 'coordinator_dashboard.php'; </script>";
         } else {
             echo "<script>alert('Invalid Details');</script>";
         }
     } catch (PDOException $e) {
-        die("Failed to fetch student: " . $e->getMessage());
+        die("Failed to fetch users: " . $e->getMessage());
     }
 }
 ?>
@@ -38,7 +38,7 @@ if (isset($_POST['login'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Login - Result Archive System</title>
+    <title>Coordinator Login - Result Archive System</title>
     <link rel="stylesheet" href="../../boostrap/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -65,7 +65,6 @@ if (isset($_POST['login'])) {
             z-index: -1;
         }
 
-        /* Navbar Styling (Matched with index.php) */
         .navbar {
             background: linear-gradient(90deg, #0288d1, #1976d2);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -96,22 +95,17 @@ if (isset($_POST['login'])) {
             transform: translateY(-2px);
         }
 
-        /* Login Section Styling */
         .login-section {
             flex: 1;
             display: flex;
             align-items: center;
-            /* Vertical centering */
             justify-content: center;
-            /* Horizontal centering */
             min-height: calc(100vh - 112px);
-            /* Adjust for navbar and footer */
         }
 
         .login-container {
             display: flex;
             justify-content: center;
-            /* Ensure horizontal centering */
             width: 100%;
         }
 
@@ -176,7 +170,6 @@ if (isset($_POST['login'])) {
             transform: scale(1.05);
         }
 
-        /* Footer Styling */
         footer {
             background: linear-gradient(90deg, #0288d1, #1976d2);
             color: #ffffff;
@@ -209,14 +202,12 @@ if (isset($_POST['login'])) {
 
             .login-section {
                 min-height: calc(100vh - 92px);
-                /* Adjust for smaller navbar/footer on mobile */
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- Navbar (Matched with index.php) -->
     <nav class="navbar navbar-expand-lg navbar-dark" data-aos="fade-down" data-aos-duration="1000">
         <div class="container">
             <a class="navbar-brand" href="../../index.php">Result Archive System - JSTU</a>
@@ -237,16 +228,16 @@ if (isset($_POST['login'])) {
         </div>
     </nav>
 
-    <!-- Login Section -->
     <section class="login-section">
         <div class="login-container">
             <div class="card" data-aos="fade-up" data-aos-duration="1000">
                 <div class="card-body">
-                    <h3 class="card-title">Student Login</h3>
+                    <h3 class="card-title">Coordinator Login</h3>
                     <form method="POST">
                         <div class="mb-3">
-                            <label for="student_id" class="form-label">Student ID</label>
-                            <input type="text" class="form-control" id="student_id" name="student_id" placeholder="Enter your Student ID" required>
+                            <label for="email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
@@ -260,16 +251,13 @@ if (isset($_POST['login'])) {
             </div>
         </div>
     </section>
-
-    <!-- Footer -->
     <?php
-    include("../../footer.php")
+    include('../../footer.php')
     ?>
-    <!-- AOS Library JS -->
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="../../boostrap/bootstrap.bundle.min.js"></script>
     <script>
-        // Initialize AOS
         AOS.init();
     </script>
 </body>
