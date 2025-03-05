@@ -19,7 +19,7 @@
                 </a>
                 <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav" style="background: rgba(255, 255, 255, 0.1); border-radius: 8px; margin: 0 10px;">
-                        <a class="nav-link" href="results_view.php" style="color: #e0f7fa; font-size: 1em; padding: 10px 30px;">Results</a>
+                        <a class="nav-link" href="results_view.php" style="color: #e0f7fa; font-size: 1em; padding: 10px 30px;">View Results</a>
                         <a class="nav-link" href="manage_students.php" style="color: #e0f7fa; font-size: 1em; padding: 10px 30px;">Manage Students</a>
                         <a class="nav-link" href="add_students.php" style="color: #e0f7fa; font-size: 1em; padding: 10px 30px;">Add Students</a>
                         <a class="nav-link" href="result_add.php" style="color: #e0f7fa; font-size: 1em; padding: 10px 30px;">Add Result</a>
