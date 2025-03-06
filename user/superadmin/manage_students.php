@@ -309,7 +309,7 @@ try {
                         <div class="card-header">
                             <i class="fas fa-table me-1"></i>
                             Student Records
-                            <button id="printButton" class="btn btn-primary" style="float: right;">Print</button>
+
                         </div>
                         <div class="card-body">
                             <table class="table table-bordered results-view-table" id="datatablesSimple">
@@ -379,11 +379,7 @@ try {
             const dataTable = new simpleDatatables.DataTable("#datatablesSimple", {
                 searchable: true,
                 fixedHeight: true,
-                layout: {
-                    topStart: {
-                        buttons: ['print']
-                    }
-                }
+
             });
         });
     </script>

@@ -1,0 +1,96 @@
+@startuml
+package "Result Archive System" {
+
+  class Student {
+    -id: String
+    -name: String
+    -password: String
+    -session: String
+    -status: Integer
+    +login(studentId: String, password: String): Boolean
+    +getDashboardData(): DashboardData
+  }
+
+  class SuperAdmin {
+    -email: String
+    -name: String
+    -password: String
+    -role: String
+    -designation: String
+    +login(email: String, password: String): Boolean
+    +getDashboardData(): DashboardData
+  }
+
+  class Coordinator {
+    -email: String
+    -name: String
+    -password: String
+    -designation: String
+    +login(email: String, password: String): Boolean
+  }
+
+  class Course {
+    -id: Integer
+    -name: String
+    +getCount(): Integer
+  }
+
+  class Result {
+    -id: Integer
+    -studentId: String
+    +getCount(): Integer
+  }
+
+  class SessionManager {
+    +startSession(): Void
+    +setStatus(status: String): Void
+    +setUserData(user: User): Void
+    +checkStatus(): Boolean
+    +redirect(location: String): Void
+  }
+
+  class Database {
+    -pdo: PDO
+    +connect(): PDO
+    +query(sql: String): ResultSet
+    +prepare(sql: String): Statement
+  }
+
+  class DashboardData {
+    -studentCount: Integer
+    -courseCount: Integer
+    -facultyCount: Integer
+    -projectCount: Integer
+    -cseFaculty: Coordinator[]
+    +getStudentCount(): Integer
+    +getCourseCount(): Integer
+    +getFacultyCount(): Integer
+    +getProjectCount(): Integer
+    +getCseFaculty(): Coordinator[]
+  }
+
+  abstract class User {
+    -email: String
+    -password: String
+    +login(email: String, password: String): Boolean
+  }
+
+  Student --|> User
+  SuperAdmin --|> User
+  Coordinator --|> User
+
+  Student "1" --> "0..*" Result : has
+  Coordinator "0..*" --> "0..*" Course : manages
+
+  SuperAdmin "1" --> "1" DashboardData : views
+  Student "1" --> "1" DashboardData : views
+
+  SessionManager o--> User : manages
+  Database o--> Student : queries
+  Database o--> SuperAdmin : queries
+  Database o--> Coordinator : queries
+  Database o--> Course : queries
+  Database o--> Result : queries
+  DashboardData o--> Database : retrieves from
+}
+@enduml

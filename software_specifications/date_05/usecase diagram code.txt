@@ -1,0 +1,67 @@
+@startuml
+left to right direction
+
+' Define actors
+actor Student
+actor SuperAdmin
+actor Coordinator
+
+' System boundary (vertical layout)
+package "Result Archive System" {
+
+  ' Use cases
+  usecase "Login" as UC1
+  usecase "View Dashboard" as UC2
+
+
+  usecase "Manage Students" as UC3
+  usecase "Add Students" as UC31
+  usecase "Add Result" as UC32
+  usecase "View Results" as UC33
+
+
+  usecase "Manage Coordinator" as UC100
+  usecase "Add Coordinator" as UC101
+
+  usecase "Manage Courses" as UC200
+  usecase "Add Course" as UC201
+
+
+
+
+  ' Relationships between actors and use cases
+  Student --> UC1
+  Student --> UC2
+
+  SuperAdmin --> UC1
+  SuperAdmin --> UC2
+  SuperAdmin --> UC3
+  SuperAdmin --> UC31
+  SuperAdmin --> UC32
+  SuperAdmin --> UC33
+  SuperAdmin --> UC200
+  SuperAdmin --> UC201
+
+  SuperAdmin --> UC100
+  SuperAdmin --> UC101
+  
+
+  UC1 <-- Coordinator
+UC2 <-- Coordinator
+
+UC32 <-- Coordinator
+UC33<-- Coordinator
+
+
+
+
+  ' Include/Extend relationships
+'  UC2 .> UC6 : <<include>>
+ ' UC3 .> UC5 : <<extend>>
+  'UC4 .> UC5 : <<extend>>
+}
+
+' Position Coordinator explicitly to the right
+Coordinator -[hidden]right- "Result Archive System"
+
+@enduml

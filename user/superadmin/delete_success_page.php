@@ -304,7 +304,7 @@ if ($_SESSION['status'] == '') {
                             <div class="alert alert-success results-view-alert" role="alert">
                                 Student record has been successfully deleted!
                             </div>
-                            <a href="students_table.php" class="btn btn-primary">Back to Students Table</a>
+                            <a href="./manage_students.php" class="btn btn-primary">Back to Students Table</a>
                         </div>
                     </div>
                 </div>

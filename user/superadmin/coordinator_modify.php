@@ -13,12 +13,13 @@ $error = '';
 if (isset($_GET['id'])) {
     $id = trim($_GET['id']);
     try {
-        $sql = "SELECT id, name, email, designation, status, phone FROM coordinator WHERE id = :id";
+        $sql = "SELECT id, name, email, designation, status, phone,password FROM coordinator WHERE id = :id";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
         if ($stmt->rowCount() > 0) {
             $row = $stmt->fetch();
+            $password = htmlspecialchars($row['password']);
             $name = htmlspecialchars($row['name']);
             $email = htmlspecialchars($row['email']);
             $designation = htmlspecialchars($row['designation']);
@@ -289,7 +290,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Password:</label>
-                                    <input type="password" class="form-control" id="password" name="password" value="<?php echo htmlspecialchars($password); ?>" required>
+                                    <input type="text" class="form-control" id="password" name="password" value="<?php echo htmlspecialchars($password); ?>" required>
                                 </div>
 
                                 <div class="mb-3">
