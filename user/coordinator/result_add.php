@@ -1,7 +1,7 @@
 <?php
 include('../../includes/config.php');
 if ($_SESSION['status'] == '') {
-    echo "<script type='text/javascript'> document.location = 'login_as_sa.php'; </script>";
+    echo "<script type='text/javascript'> document.location = 'login_as_coordinator.php'; </script>";
 }
 
 if (isset($_GET['action'])) {
@@ -364,7 +364,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <?php if (!empty($success)): ?>
                         <div class="alert alert-success results-view-alert" role="alert">
                             <?php echo htmlspecialchars($success); ?>
-                            <a href="view_results.php" class="btn btn-primary">View Results</a>
+                            <a href="results_view.php" class="btn btn-primary">View Results</a>
                         </div>
                     <?php elseif (!empty($error)): ?>
                         <div class="alert alert-danger results-view-alert" role="alert">

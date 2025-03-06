@@ -8,7 +8,7 @@
         <div class="navbar-brand d-flex align-items-center position-absolute" style="left: 50%; transform: translateX(-50%);">
             <img src="../../user/superadmin/assets/images/logo.png" alt="JSTU Logo" style="height: 40px; margin-right: 10px; ">
             <span style="font-family: 'Playfair Display', serif; font-size: 1.8em; font-weight: 700; color: #ffffff; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);">
-                JSTU Admin
+                JSTU-Students
             </span>
         </div>
 

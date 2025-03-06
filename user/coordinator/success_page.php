@@ -5,7 +5,7 @@ error_reporting(0);
 include('../../includes/config.php');
 
 if ($_SESSION['status'] == '') {
-    echo "<script type='text/javascript'> document.location = 'login_as_std.php'; </script>";
+    echo "<script type='text/javascript'> document.location = 'login_as_sa.php'; </script>";
 }
 ?>
 <!DOCTYPE html>
@@ -15,7 +15,7 @@ if ($_SESSION['status'] == '') {
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Success - RAS Admin</title>
+    <title>Success - RAS Coordinator</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet" />

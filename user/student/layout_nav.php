@@ -4,6 +4,11 @@
         <div class="sb-sidenav-menu">
             <div class="nav" style="font-family: 'Playfair Display', serif;">
 
+                <div class="sb-sidenav-menu-heading" style="color: #ffffff; font-size: 1.2em; font-weight: 700; text-transform: uppercase; border-bottom: 1px solid rgba(255, 255, 255, 0.2); padding-bottom: 5px; margin-bottom: 10px;">Core</div>
+                <a class="nav-link" href="./student_dashboard.php" style="color: #ffffff; font-size: 1.1em; padding: 12px 20px; transition: background 0.3s ease;">
+                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt" style="color: #81d4fa;"></i></div>
+                    Dashboard
+                </a>
 
 
                 <div class="sb-sidenav-menu-heading"
@@ -29,27 +34,7 @@
                     </nav>
                 </div>
 
-                <div class="collapse" id="collapseLayouts2" aria-labelledby="headingOne"
-                    data-bs-parent="#sidenavAccordion">
-                    <nav class="sb-sidenav-menu-nested nav"
-                        style="background: rgba(255, 255, 255, 0.1); border-radius: 8px; margin: 0 10px;">
-                        <a class="nav-link" href="coordinator_manage.php"
-                            style="color: #e0f7fa; font-size: 1em; padding: 10px 30px;">Manage Coordinators</a>
-                        <a class="nav-link" href="coordinator_add.php"
-                            style="color: #e0f7fa; font-size: 1em; padding: 10px 30px;">Add Coordinator</a>
-                    </nav>
-                </div>
 
-                <div class="collapse" id="collapseCourses" aria-labelledby="headingOne"
-                    data-bs-parent="#sidenavAccordion">
-                    <nav class="sb-sidenav-menu-nested nav"
-                        style="background: rgba(255, 255, 255, 0.1); border-radius: 8px; margin: 0 10px;">
-                        <a class="nav-link" href="course_manage.php"
-                            style="color: #e0f7fa; font-size: 1em; padding: 10px 30px;">Manage Courses</a>
-                        <a class="nav-link" href="course_add.php"
-                            style="color: #e0f7fa; font-size: 1em; padding: 10px 30px;">Add Course</a>
-                    </nav>
-                </div>
             </div>
         </div>
 

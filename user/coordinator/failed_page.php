@@ -1,13 +1,14 @@
 <?php
-
 session_start();
 error_reporting(0);
 include('../../includes/config.php');
 
 if ($_SESSION['status'] == '') {
-    echo "<script type='text/javascript'> document.location = 'login_as_std.php'; </script>";
+    echo "<script type='text/javascript'> document.location = 'login_as_sa.php'; </script>";
 }
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +16,7 @@ if ($_SESSION['status'] == '') {
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Success - RAS Admin</title>
+    <title>Failed - RAS COordinator</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet" />
@@ -122,6 +123,23 @@ if ($_SESSION['status'] == '') {
 
         .btn-danger:hover {
             background: linear-gradient(90deg, #f44336, #d32f2f);
+            transform: scale(1.05);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(90deg, #607d8b, #90a4ae);
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 600;
+            font-size: 1em;
+            color: #fff;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: linear-gradient(90deg, #90a4ae, #607d8b);
             transform: scale(1.05);
         }
 
@@ -262,7 +280,8 @@ if ($_SESSION['status'] == '') {
             }
 
             .btn-primary,
-            .btn-danger {
+            .btn-danger,
+            .btn-secondary {
                 padding: 8px 15px;
                 font-size: 0.9em;
             }
@@ -289,26 +308,34 @@ if ($_SESSION['status'] == '') {
         <div id="layoutSidenav_content">
             <main class="results-view-main">
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Success</h1>
+                    <h1 class="mt-4">Error</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item"><a href="./admin_dashboard.php">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Success</li>
+                        <li class="breadcrumb-item active">Error</li>
                     </ol>
                     <div class="results-view-card">
                         <div class="card-header">
-                            <i class="fas fa-check-circle me-1"></i>
-                            Success
+                            <i class="fas fa-exclamation-circle me-1"></i>
+                            Error
                         </div>
                         <div class="card-body">
-                            <div class="alert alert-success results-view-alert" role="alert">
-                                Student information has been successfully updated!
+                            <div class="alert alert-danger results-view-alert" role="alert">
+                                <?php
+                                if (isset($_GET['error'])) {
+                                    echo htmlspecialchars($_GET['error']);
+                                } else {
+                                    echo "An unexpected error occurred.";
+                                }
+                                ?>
                             </div>
-                            <a href="./manage_students.php" class="btn btn-primary">Back to Students Table</a>
+                            <a href="./manage_students.php" class="btn btn-secondary">Back to Students Table</a>
                         </div>
                     </div>
                 </div>
             </main>
-            <?php include('./footer.php'); ?>
+            <?php
+            include('./footer.php')
+            ?>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

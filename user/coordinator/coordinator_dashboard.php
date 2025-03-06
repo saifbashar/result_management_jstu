@@ -4,7 +4,7 @@ error_reporting(0);
 include('../../includes/config.php');
 
 if ($_SESSION['status'] != 1) {
-    echo "<script type='text/javascript'> document.location = 'login_as_sa.php'; </script>";
+    echo "<script type='text/javascript'> document.location = 'login_as_coordinator.php'; </script>";
 }
 
 try {
@@ -24,7 +24,7 @@ try {
     $stmtProjects = $pdo->query($sqlProjects);
     $projectCount = $stmtProjects->fetch(PDO::FETCH_ASSOC)['project_count'];
 
-    $sqlCseFaculty = "SELECT name, designation, email, phone FROM coordinator WHERE designation LIKE '%Computer Science%' LIMIT 5";
+    $sqlCseFaculty = "SELECT name, designation, email, phone FROM coordinator";
     $stmtCseFaculty = $pdo->query($sqlCseFaculty);
     $cseFaculty = $stmtCseFaculty->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
@@ -271,30 +271,25 @@ try {
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xl-3 col-md-6">
+                        <div class="col-xl-4 col-md-6">
                             <div class="dashboard-widget">
                                 <h4>Total Students</h4>
                                 <p class="display-6"><?php echo $studentCount; ?></p>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-md-6">
+                        <div class="col-xl-4 col-md-6">
                             <div class="dashboard-widget">
                                 <h4>Courses Offered</h4>
                                 <p class="display-6"><?php echo $courseCount; ?></p>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-md-6">
+                        <div class="col-xl-4 col-md-6">
                             <div class="dashboard-widget">
                                 <h4>Faculty Members</h4>
                                 <p class="display-6"><?php echo $facultyCount; ?></p>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-md-6">
-                            <!-- <div class="dashboard-widget">
-                                <h4>Research Projects</h4>
-                                <p class="display-6"><?php echo $projectCount; ?></p>
-                            </div> -->
-                        </div>
+
                     </div>
 
                     <div class="row">
@@ -325,26 +320,17 @@ try {
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <?php
-                                $sampleFaculty = [
-                                    ['name' => 'Dr. Mahmudul Alam', 'designation' => 'Assistant Professor', 'email' => 'john@jstu.edu', 'phone' => '123-456-7890', 'photo' => 'https://via.placeholder.com/100.png?text=John'],
-                                    ['name' => 'Md Hassan Mahmood ', 'designation' => 'Assistant Professor', 'email' => 'jane@jstu.edu', 'phone' => '123-456-7891', 'photo' => 'https://via.placeholder.com/100.png?text=Jane'],
-                                    ['name' => 'Md. Khabir Uddhin Ahmed', 'designation' => 'Lecturer', 'email' => 'alex@jstu.edu', 'phone' => '123-456-7892', 'photo' => 'https://via.placeholder.com/100.png?text=Alex'],
-                                    ['name' => 'Md Sydur Rahman', 'designation' => 'Lecturer', 'email' => 'emily@jstu.edu', 'phone' => '123-456-7893', 'photo' => 'https://via.placeholder.com/100.png?text=Emily'],
-                                    ['name' => 'Sujit Roy', 'designation' => 'Chairman', 'email' => 'mike@jstu.edu', 'phone' => '123-456-7894', 'photo' => 'https://via.placeholder.com/100.png?text=Mike']
-                                ];
-                                foreach ($sampleFaculty as $faculty) {
-                                    echo "<div class='col-md-4 mb-3'>
-                                        <div class='faculty-card text-center'>
-                                            <img src='{$faculty['photo']}' alt='{$faculty['name']}' class='mb-2'>
-                                            <h5>{$faculty['name']}</h5>
-                                            <p>{$faculty['designation']}</p>
-                                            <p>Email: {$faculty['email']}</p>
-                                            <p>Phone: {$faculty['phone']}</p>
+                                <?php foreach ($cseFaculty as $faculty) { ?>
+                                    <div class="col-md-4 mb-3">
+                                        <div class="faculty-card text-center">
+                                            <img src="../../user/superadmin/assets/dashboard_picture/avator_faculty.png" alt="<?php echo $faculty['name']; ?>" class="mb-2">
+                                            <h5><?php echo $faculty['name']; ?></h5>
+                                            <p><?php echo $faculty['designation']; ?></p>
+                                            <p>Email: <?php echo $faculty['email']; ?></p>
+                                            <p>Phone: <?php echo $faculty['phone']; ?></p>
                                         </div>
-                                    </div>";
-                                }
-                                ?>
+                                    </div>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>

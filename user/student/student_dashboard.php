@@ -24,7 +24,7 @@ try {
     $stmtProjects = $pdo->query($sqlProjects);
     $projectCount = $stmtProjects->fetch(PDO::FETCH_ASSOC)['project_count'];
 
-    $sqlCseFaculty = "SELECT name, designation, email, phone FROM coordinator WHERE designation LIKE '%Computer Science%' LIMIT 5";
+    $sqlCseFaculty = "SELECT name, designation, email, phone FROM coordinator";
     $stmtCseFaculty = $pdo->query($sqlCseFaculty);
     $cseFaculty = $stmtCseFaculty->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
@@ -254,14 +254,14 @@ try {
         <div id="layoutSidenav_content">
             <main class="results-view-main">
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4 animate__animated animate__bounceIn">JSTU Dashboard</h1>
+                    <h1 class="mt-4 animate__animated animate__bounceIn">Welcome <?php echo isset($_SESSION['student_name']) ? htmlspecialchars($_SESSION['student_name']) : 'Unknown'; ?></h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item active">Dashboard</li>
                     </ol>
 
                     <div class="university-info mb-4">
                         <div class="row">
-                        <div class="col-md-4">
+                            <div class="col-md-4">
                                 <img src="../../user/superadmin/assets/images/logo.png" alt="JSTU Campus" style="height: 250px;" class="animate__animated animate__fadeIn">
                             </div>
                             <div class="col-md-8">
@@ -277,30 +277,25 @@ try {
                     </div>
 
                     <div class="row">
-                        <div class="col-xl-3 col-md-6">
+                        <div class="col-xl-4 col-md-6">
                             <div class="dashboard-widget">
                                 <h4>Total Students</h4>
                                 <p class="display-6"><?php echo $studentCount; ?></p>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-md-6">
+                        <div class="col-xl-4 col-md-6">
                             <div class="dashboard-widget">
                                 <h4>Courses Offered</h4>
                                 <p class="display-6"><?php echo $courseCount; ?></p>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-md-6">
+                        <div class="col-xl-4 col-md-6">
                             <div class="dashboard-widget">
                                 <h4>Faculty Members</h4>
                                 <p class="display-6"><?php echo $facultyCount; ?></p>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-md-6">
-                            <div class="dashboard-widget">
-                                <h4>Research Projects</h4>
-                                <p class="display-6"><?php echo $projectCount; ?></p>
-                            </div>
-                        </div>
+
                     </div>
 
                     <div class="row">
@@ -331,41 +326,24 @@ try {
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <?php
-                                $sampleFaculty = [
-                                    ['name' => 'Dr. John Doe', 'designation' => 'Professor', 'email' => 'john@jstu.edu', 'phone' => '123-456-7890', 'photo' => 'https://via.placeholder.com/100.png?text=John'],
-                                    ['name' => 'Dr. Jane Smith', 'designation' => 'Associate Professor', 'email' => 'jane@jstu.edu', 'phone' => '123-456-7891', 'photo' => 'https://via.placeholder.com/100.png?text=Jane'],
-                                    ['name' => 'Mr. Alex Brown', 'designation' => 'Assistant Professor', 'email' => 'alex@jstu.edu', 'phone' => '123-456-7892', 'photo' => 'https://via.placeholder.com/100.png?text=Alex'],
-                                    ['name' => 'Ms. Emily White', 'designation' => 'Lecturer', 'email' => 'emily@jstu.edu', 'phone' => '123-456-7893', 'photo' => 'https://via.placeholder.com/100.png?text=Emily'],
-                                    ['name' => 'Dr. Mike Green', 'designation' => 'Professor', 'email' => 'mike@jstu.edu', 'phone' => '123-456-7894', 'photo' => 'https://via.placeholder.com/100.png?text=Mike']
-                                ];
-                                foreach ($sampleFaculty as $faculty) {
-                                    echo "<div class='col-md-4 mb-3'>
-                                        <div class='faculty-card text-center'>
-                                            <img src='{$faculty['photo']}' alt='{$faculty['name']}' class='mb-2'>
-                                            <h5>{$faculty['name']}</h5>
-                                            <p>{$faculty['designation']}</p>
-                                            <p>Email: {$faculty['email']}</p>
-                                            <p>Phone: {$faculty['phone']}</p>
+                                <?php foreach ($cseFaculty as $faculty) { ?>
+                                    <div class="col-md-4 mb-3">
+                                        <div class="faculty-card text-center">
+                                            <img src="../../user/superadmin/assets/dashboard_picture/avator_faculty.png" alt="<?php echo $faculty['name']; ?>" class="mb-2">
+                                            <h5><?php echo $faculty['name']; ?></h5>
+                                            <p><?php echo $faculty['designation']; ?></p>
+                                            <p>Email: <?php echo $faculty['email']; ?></p>
+                                            <p>Phone: <?php echo $faculty['phone']; ?></p>
                                         </div>
-                                    </div>";
-                                }
-                                ?>
+                                    </div>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
                 </div>
             </main>
-            <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid px-4">
-                    <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright © JSTU 2023</div>
-                        <div>
-                            <a href="#">Privacy Policy</a> · <a href="#">Terms & Conditions</a>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            <?php
+            include('./footer.php') ?>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"

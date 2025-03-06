@@ -2,7 +2,7 @@
 session_start();
 include('../../includes/config.php');
 if ($_SESSION['status'] == '') {
-    echo "<script type='text/javascript'> document.location = 'login_as_sa.php'; </script>";
+    echo "<script type='text/javascript'> document.location = 'login_as_coordinator.php'; </script>";
 }
 
 require_once __DIR__ . '/../../vendor/autoload.php';
